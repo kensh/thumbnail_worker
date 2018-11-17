@@ -11,10 +11,10 @@ rabbit.connect('amqp://localhost', (err, conn) => {
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", QUEUE);
 
     ch.consume(QUEUE, (que) => {
-      let msg = que.content.toString();
-      console.log(" [x] dequeued %s", msg);
-      editor.convert(msg);
-
+      let msg = JSON.parse(que.content.toString());
+      console.log(" [x] dequeued %s", msg.filename);
+      editor.convert(msg.filename);
+      
       ch.ack(que);
     }, {noAck: false});
   });
