@@ -2,6 +2,7 @@ const rabbit = require('amqplib/callback_api');
 const QUEUE = 'task_queue'; 
 
 const editor = require('./imagemagick.js');
+const cache = require('./redis.js');
 
 rabbit.connect('amqp://localhost', (err, conn) => {
   conn.createChannel((err, ch) => {
@@ -12,8 +13,10 @@ rabbit.connect('amqp://localhost', (err, conn) => {
 
     ch.consume(QUEUE, (que) => {
       let msg = JSON.parse(que.content.toString());
-      console.log(" [x] dequeued %s", msg.filename);
+      console.log(" [x] dequeued %s", que.content.toString());
+
       editor.convert(msg.filename);
+      cache.set(msg.filename, msg.originalname);      
       
       ch.ack(que);
     }, {noAck: false});
