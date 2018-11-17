@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kensh/thumbnail_worker#readme",
   "dependencies": {
-    "amqplib": "^0.5.2"
+    "amqplib": "^0.5.2",
+    "imagemagick": "^0.1.3"
   }
 }
