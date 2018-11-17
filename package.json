@@ -1,0 +1,22 @@
+{
+  "name": "thumbnail_worker",
+  "version": "1.0.0",
+  "description": "thumbnail_worker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kensh/thumbnail_worker.git"
+  },
+  "author": "kensh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kensh/thumbnail_worker/issues"
+  },
+  "homepage": "https://github.com/kensh/thumbnail_worker#readme",
+  "dependencies": {
+    "amqplib": "^0.5.2"
+  }
+}
