@@ -1,10 +1,10 @@
-const rabbit = require('amqplib/callback_api');
+const message_queue = require('amqplib/callback_api');
 const QUEUE = 'task_queue'; 
 
 const editor = require('./imagemagick.js');
 const cache = require('./redis.js');
 
-rabbit.connect('amqp://localhost', (err, conn) => {
+message_queue.connect('amqp://rabbitmq', (err, conn) => {
   conn.createChannel((err, ch) => {
 
     ch.assertQueue(QUEUE, {durable: true});
