@@ -8,7 +8,7 @@ RUN yum -y install ImageMagick \
  && yum -y install nodejs
 
 COPY ./*.js ./*.json $APP_HOME
-RUN npm install
+RUN npm install --production
 
 RUN echo "#!/bin/bash" > run.sh \
  && echo "sleep 30 && node app.js" >> run.sh \
